@@ -34,7 +34,8 @@ public class SimpleServlet2 extends HttpServlet {
         try {			
         	
         	HttpResponse<String> json = Unirest.get(ENDPOINT).asString();
-        	Tweets tweets = gson.fromJson(json.getBody(), Tweets.class);        
+        	Tweets tweets = gson.fromJson(json.getBody(), Tweets.class);  
+        	TweetsCount tweetsC = gson.fromJson(json.getBody(), TweetsCount.class);  
         	
         	List<Row> rows = tweets.getRows();
         	int bad = 0;
@@ -49,8 +50,8 @@ public class SimpleServlet2 extends HttpServlet {
         		
         	}
         	
-        	tweets.setBadTweets(bad);
-        	tweets.setGoodTweets(good);        	
+        	tweetsC.setBadTweets(bad);
+        	tweetsC.setGoodTweets(good);        	
         	response.getWriter().print(gson.toJson(tweets));
         	
 		} catch (UnirestException e) {
