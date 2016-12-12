@@ -35,7 +35,7 @@ public class SimpleServlet2 extends HttpServlet {
         	
         	HttpResponse<String> json = Unirest.get(ENDPOINT).asString();
         	Tweets tweets = gson.fromJson(json.getBody(), Tweets.class);  
-        	TweetsCount tweetsC = gson.fromJson(json.getBody(), TweetsCount.class);  
+        	TweetsCount tweetsC = new TweetsCount();  
         	
         	List<Row> rows = tweets.getRows();
         	int bad = 0;
