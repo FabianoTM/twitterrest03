@@ -37,21 +37,21 @@ public class SimpleServlet extends HttpServlet {
         	Tweets tweets = gson.fromJson(json.getBody(), Tweets.class);        
         	
         	List<Row> rows = tweets.getRows();
-//        	int bad = 0;
-//        	int good = 0;        	
-//        	for (Row row : rows) {
-//        		Sentiment sentiment = row.getDoc().getSentiment();
-//        		int score = sentiment.getScore();
-//        		if (score < 0)
-//        			bad += 1;
-//        		else
-//        			good += 1;
-//        		
-//        	}
-//        	
-//        	tweets.setBadTweets(bad);
-//        	tweets.setGoodTweets(good);        	
-//        	response.getWriter().print(gson.toJson(tweets));
+        	int bad = 0;
+        	int good = 0;        	
+        	for (Row row : rows) {
+        		Sentiment sentiment = row.getDoc().getSentiment();
+        		int score = sentiment.getScore();
+        		if (score < 0)
+        			bad += 1;
+        		else
+        			good += 1;
+        		
+        	}
+        	
+        	tweets.setBadTweets(bad);
+        	tweets.setGoodTweets(good);        	
+        	response.getWriter().print(gson.toJson(tweets));
         	response.getWriter().print("Registros na base: " + rows.size());
         	
 		} catch (UnirestException e) {
