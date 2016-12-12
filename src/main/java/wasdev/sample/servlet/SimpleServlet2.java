@@ -39,19 +39,23 @@ public class SimpleServlet2 extends HttpServlet {
         	
         	List<Row> rows = tweets.getRows();
         	int bad = 0;
-        	int good = 0;        	
+        	int good = 0;  
+        	int neutral = 0;
         	for (Row row : rows) {
         		Sentiment sentiment = row.getDoc().getSentiment();
         		int score = sentiment.getScore();
         		if (score < 0)
         			bad += 1;
         		else
-        			good += 1;
-        		
+        			if(score == 0 )
+        				neutral += 1;
+        			else
+        				good += 1;
         	}
         	
         	tweetsC.setBadTweets(bad);
         	tweetsC.setGoodTweets(good); 
+        	tweetsC.setNeutralTweets(neutral);
         	tweetsC.setTotal(rows.size());
         	response.getWriter().print(gson.toJson(tweetsC));
         	

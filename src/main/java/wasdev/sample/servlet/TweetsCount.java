@@ -15,6 +15,9 @@ public class TweetsCount {
 	@SerializedName("good_tweets")
 	private int goodTweets;
 	
+	@SerializedName("neutral_tweets")
+	private int neutralTweets;
+	
 //	private List<Row> rows;
 
 	public int getTotal() {
@@ -41,12 +44,13 @@ public class TweetsCount {
 		this.goodTweets = goodTweets;
 	}
 
-//	public List<Row> getRows() {
-//		return rows;
-//	}
-//
-//	public void setRows(List<Row> rows) {
-//		this.rows = rows;
-//	}
-				
+	public int getNeutralTweets() {
+		return neutralTweets;
+	}
+
+	public void setNeutralTweets(int neutralTweets) {
+		this.neutralTweets = neutralTweets;
+	}
+	
+	
 }
