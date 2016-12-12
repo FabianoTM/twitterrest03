@@ -21,7 +21,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 public class SimpleServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private final String ENDPOINT = "https://8f0fc3b9-d29f-4415-a1aa-c50ba31bb228-bluemix.cloudant.com/db_twitter/_all_docs?include_docs=true&conflicts=true";
+    private final String ENDPOINT = "https://8f0fc3b9-d29f-4415-a1aa-c50ba31bb228-bluemix.cloudant.com/twitter/_all_docs?include_docs=false&conflicts=true";
     
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
