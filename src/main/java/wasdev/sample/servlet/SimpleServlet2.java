@@ -17,8 +17,8 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 /**
  * Servlet implementation class SimpleServlet
  */
-@WebServlet("/")
-public class SimpleServlet extends HttpServlet {
+@WebServlet("/tweets")
+public class SimpleServlet2 extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private final String ENDPOINT = "https://8f0fc3b9-d29f-4415-a1aa-c50ba31bb228-bluemix.cloudant.com/db_twitter/_all_docs?include_docs=true&conflicts=true";
@@ -37,22 +37,21 @@ public class SimpleServlet extends HttpServlet {
         	Tweets tweets = gson.fromJson(json.getBody(), Tweets.class);        
         	
         	List<Row> rows = tweets.getRows();
-//        	int bad = 0;
-//        	int good = 0;        	
-//        	for (Row row : rows) {
-//        		Sentiment sentiment = row.getDoc().getSentiment();
-//        		int score = sentiment.getScore();
-//        		if (score < 0)
-//        			bad += 1;
-//        		else
-//        			good += 1;
-//        		
-//        	}
-//        	
-//        	tweets.setBadTweets(bad);
-//        	tweets.setGoodTweets(good);        	
-//        	response.getWriter().print(gson.toJson(tweets));
-        	response.getWriter().print("Registros na base: " + rows.size());
+        	int bad = 0;
+        	int good = 0;        	
+        	for (Row row : rows) {
+        		Sentiment sentiment = row.getDoc().getSentiment();
+        		int score = sentiment.getScore();
+        		if (score < 0)
+        			bad += 1;
+        		else
+        			good += 1;
+        		
+        	}
+        	
+        	tweets.setBadTweets(bad);
+        	tweets.setGoodTweets(good);        	
+        	response.getWriter().print(gson.toJson(tweets));
         	
 		} catch (UnirestException e) {
 			e.printStackTrace();
