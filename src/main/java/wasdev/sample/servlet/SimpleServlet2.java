@@ -52,7 +52,7 @@ public class SimpleServlet2 extends HttpServlet {
         	
         	tweetsC.setBadTweets(bad);
         	tweetsC.setGoodTweets(good);        	
-        	response.getWriter().print(gson.toJson(tweets));
+        	response.getWriter().print(gson.toJson(tweetsC));
         	
 		} catch (UnirestException e) {
 			e.printStackTrace();
